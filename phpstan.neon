@@ -6,5 +6,5 @@ parameters:
         - .
     excludePaths:
         - vendor
-    magento:
-        rootDir: ../../..
+        # The integration test framework (Magento\TestFramework) is only autoloadable inside its own bootstrap.
+        - Test/Integration
