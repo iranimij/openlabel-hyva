@@ -1,0 +1,15 @@
+name: Feature request
+description: Suggest something new
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: input
+    id: prior
+    attributes:
+      label: Which existing (paid or free) module has this?
+      placeholder: Link to its documentation, not its code

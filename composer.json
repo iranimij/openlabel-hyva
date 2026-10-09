@@ -1,0 +1,43 @@
+{
+    "name": "iranimij/openlabel-hyva",
+    "description": "OpenLabel render package for Hyvä themes: label slots in product listings and the product gallery, generated per-store CSS, no Tailwind rebuild needed.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "keywords": ["magento2", "mage-os", "hyva", "product-labels", "badges", "openlabel"],
+    "homepage": "https://github.com/iranimij/openlabel-hyva",
+    "support": {
+        "issues": "https://github.com/iranimij/openlabel-hyva/issues",
+        "source": "https://github.com/iranimij/openlabel-hyva",
+        "docs": "https://github.com/iranimij/openlabel/tree/main/docs"
+    },
+    "authors": [
+        {
+            "name": "Iman Aboheydary",
+            "homepage": "https://github.com/iranimij"
+        }
+    ],
+    "require": {
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+        "iranimij/openlabel": "^1.0 || dev-main",
+        "magento/framework": "^103.0.7",
+        "magento/module-catalog": "^104.0.7",
+        "magento/module-store": "^101.1.7"
+    },
+    "suggest": {
+        "hyva-themes/magento2-default-theme": "The Hyvä default theme (1.3 or 1.4) this package renders into"
+    },
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": {
+            "Iranimij\\OpenLabelHyva\\": ""
+        }
+    },
+    "extra": {
+        "iranimij": {
+            "changelog": "https://github.com/iranimij/openlabel-hyva/blob/main/CHANGELOG.md"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
