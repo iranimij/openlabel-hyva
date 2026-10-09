@@ -22,5 +22,4 @@ foreach ($candidates as $start) {
         $dir = dirname($dir);
     }
 }
-fwrite(STDERR, "Magento root not found. Run from a Magento root or set MAGENTO_ROOT.\n");
-exit(1);
+throw new RuntimeException('Magento root not found. Run from a Magento root or set MAGENTO_ROOT.');
