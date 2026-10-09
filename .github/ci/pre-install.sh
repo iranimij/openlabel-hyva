@@ -3,6 +3,11 @@
 # the Magento project. Keep it idempotent: the same script serves the unit, integration and PHPStan jobs.
 set -e
 
+# Authenticate Composer against the GitHub API (VCS repositories and dist downloads) to avoid the anonymous rate limit.
+if [ -n "${GITHUB_TOKEN:-}" ]; then
+    composer config -g github-oauth.github.com "$GITHUB_TOKEN"
+fi
+
 # Until the iranimij packages are on Packagist, CI resolves them from GitHub.
 composer config repositories.iranimij-base vcs https://github.com/iranimij/module-base
 composer config repositories.iranimij-openlabel vcs https://github.com/iranimij/openlabel
