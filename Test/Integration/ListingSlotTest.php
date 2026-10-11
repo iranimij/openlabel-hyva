@@ -109,7 +109,9 @@ class ListingSlotTest extends TestCase
         $css = Bootstrap::getObjectManager()->get(StylesheetGenerator::class)->build();
 
         self::assertStringContainsString('.product-item{container-type: inline-size}', $css);
-        self::assertStringContainsString('#gallery-main{container-type: inline-size}', $css);
+        // Hyvä 1.3/1.4: the gallery container; Hyvä 1.5: the gallery section (never the scrolling track).
+        self::assertStringContainsString('#gallery-main:not([data-track]){container-type: inline-size}', $css);
+        self::assertStringContainsString('#gallery:has(>.relative>.ol-stack){container-type: inline-size}', $css);
         self::assertStringContainsString('.fixed #gallery-main>.ol-stack{display: none}', $css);
     }
 
