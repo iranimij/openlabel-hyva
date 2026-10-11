@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-11
+
+OpenLabel 1.0 for Hyvä: labels on listings (category, search, widgets, sliders) and in the product gallery, from cached pages, without JavaScript or a Tailwind build. Tested on Hyvä 1.4.2 and 1.5.2 (1.3 best effort).
+
 ### Added
 - Hyvä 1.5 product page: `#gallery-main` is the scrolling image track there (`data-track`), so the label stacks go right before it, into the gallery's positioned wrapper, and overlay the visible slide; the gallery section is the container-query root.
 
@@ -13,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [1.0.0-rc1] - 2026-10-11
 
-First release candidate of the Hyvä render package for OpenLabel 1.0 (requires `iranimij/openlabel` ^1.0). Tested on Hyvä 1.4.2; 1.3 best effort; on Hyvä 1.5 listings work, product-page labels not yet.
+First release candidate of the Hyvä render package for OpenLabel 1.0 (requires `iranimij/openlabel` ^1.0).
 
 ### Added
 - M3 S6 · `bin/magento hyva:config:generate` lists the module (observer on `hyva_config_generate_before`) so theme builds can scan `view/frontend/tailwind/tailwind.config.js`; nothing depends on it. The listing plugin tags the page with every product card it sees (`cat_p_<id>`), so CMS pages with product widgets refresh when a label starts matching. Storefront acceptance specs (CSP, no inline styles, no rebuild, click-through, legibility, RTL) live in `openlabel-dev-env`.
@@ -21,5 +25,6 @@ First release candidate of the Hyvä render package for OpenLabel 1.0 (requires 
 - M3 S3 · Listing slot: an `after` plugin on `Magento\Catalog\Block\Product\Image::toHtml()` (template `Magento_Catalog::product/list/image.phtml` only) wraps the product image in `<span class="ol-anchor">` with the label stacks after it, reusing the image's `loading`; covers category, search, widgets, Page Builder carousels and product sliders. Storefront-only plugin on product collections remembers loaded products (≤ 200) so the page resolves its labels with one query. `ListItemProcessor` adds `openlabel_<id>` / `openlabel_design_<id>` to Hyvä's list-item block cache tags and to the page. The generated stylesheet gets the Hyvä container roots (`.product-item`, `#gallery-main`) and hides labels in the fullscreen gallery. `hyva_default` adds the stylesheet `<link>` and the page cache identities block.
 - Module skeleton `Iranimij_OpenLabelHyva` (M0): `hyva_*` layout handle files, Tailwind source stub, CI template.
 
-[Unreleased]: https://github.com/iranimij/openlabel-hyva/compare/v1.0.0-rc1...HEAD
+[Unreleased]: https://github.com/iranimij/openlabel-hyva/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/iranimij/openlabel-hyva/compare/v1.0.0-rc1...v1.0.0
 [1.0.0-rc1]: https://github.com/iranimij/openlabel-hyva/releases/tag/v1.0.0-rc1
