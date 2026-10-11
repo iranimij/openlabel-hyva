@@ -9,7 +9,17 @@
     container-type: inline-size;
 }
 
-#gallery-main {
+/* Hyvä 1.3/1.4: #gallery-main is a full-width block that holds the image. */
+#gallery-main:not([data-track]) {
+    container-type: inline-size;
+}
+
+/*
+ * Hyvä 1.5+: #gallery-main is the scrolling track (data-track) inside a shrink-to-fit wrapper of a flex row;
+ * containment on the track or the wrapper would collapse the gallery to zero width. The labels sit in that
+ * wrapper, and the gallery section (a grid column, so its width never depends on its content) is the root.
+ */
+#gallery:has(> .relative > .ol-stack) {
     container-type: inline-size;
 }
 

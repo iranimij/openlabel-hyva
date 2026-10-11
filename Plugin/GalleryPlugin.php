@@ -11,9 +11,10 @@ namespace Iranimij\OpenLabelHyva\Plugin;
 use Magento\Catalog\Block\Product\View\Gallery;
 
 /**
- * Product page slot. Hyvä's gallery template has no child-block call (docs/hyva-integration.md §2), so the
+ * Product page slot. Hyvä 1.3/1.4: the gallery template has no child-block call (docs/hyva-integration.md §2), so the
  * `openlabel.product.labels` child is inserted right after the `#gallery-main` opening tag, which also gets the
- * `ol-anchor` class. A custom gallery that calls the child block itself is left alone.
+ * `ol-anchor` class. Hyvä 1.5+: `#gallery-main` is the scrolling image track (`data-track`) inside a positioned
+ * wrapper, so the child goes right before it. A custom gallery that calls the child block itself is left alone.
  */
 class GalleryPlugin
 {
@@ -39,13 +40,18 @@ class GalleryPlugin
             return $result;
         }
         $attributes = $match[2][0];
+        $offset = $match[0][1];
+        if (preg_match('/\sdata-track[\s=>]|\sdata-track$/i', $attributes) === 1) {
+            // Hyvä 1.5+: #gallery-main is the scrolling image track inside a positioned wrapper. The stacks go right
+            // before the track, so they overlay the visible slide instead of scrolling away with the first one.
+            return substr($result, 0, $offset) . trim($stacks) . substr($result, $offset);
+        }
         if (preg_match('/\bclass="/i', $attributes) === 1) {
             $attributes = (string) preg_replace('/\bclass="/i', 'class="ol-anchor ', $attributes, 1);
         } else {
             $attributes .= ' class="ol-anchor"';
         }
         $tag = '<' . $match[1][0] . $attributes . '>';
-        $offset = $match[0][1];
 
         return substr($result, 0, $offset) . $tag . trim($stacks) . substr($result, $offset + strlen($match[0][0]));
     }
