@@ -5,8 +5,12 @@
  * See LICENSE for license details (MIT).
  */
 -->
-<!-- M0 placeholder: Hyvä adds the "hyva_" prefixed handle for every page; label slots are declared here in M3. -->
+<!-- Product page: label stacks inside #gallery-main (inserted by Plugin\GalleryPlugin, docs/hyva-integration.md §2). -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body/>
+    <body>
+        <referenceBlock name="product.media">
+            <block class="Iranimij\OpenLabelHyva\Block\ProductLabels" name="openlabel.product.labels"/>
+        </referenceBlock>
+    </body>
 </page>

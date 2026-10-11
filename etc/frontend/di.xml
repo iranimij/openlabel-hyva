@@ -10,6 +10,9 @@
     <type name="Magento\Catalog\Block\Product\Image">
         <plugin name="openlabel_listing_slot" type="Iranimij\OpenLabelHyva\Plugin\ProductImagePlugin"/>
     </type>
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="openlabel_gallery_slot" type="Iranimij\OpenLabelHyva\Plugin\GalleryPlugin"/>
+    </type>
     <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
         <plugin name="openlabel_remember_products" type="Iranimij\OpenLabelHyva\Plugin\CollectionPreloadPlugin"/>
     </type>
