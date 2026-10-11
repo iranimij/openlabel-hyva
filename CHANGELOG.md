@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
+### Added
+- Hyvä 1.5 product page: `#gallery-main` is the scrolling image track there (`data-track`), so the label stacks go right before it, into the gallery's positioned wrapper, and overlay the visible slide; the gallery section is the container-query root.
+
+### Fixed
+- Hyvä 1.5: `container-type: inline-size` on the new `#gallery-main` track collapsed the whole product gallery to zero width (the track sits in a shrink-to-fit flex item). Containment now applies to the Hyvä 1.3/1.4 container only.
+
 ## [1.0.0-rc1] - 2026-10-11
 
 First release candidate of the Hyvä render package for OpenLabel 1.0 (requires `iranimij/openlabel` ^1.0). Tested on Hyvä 1.4.2; 1.3 best effort; on Hyvä 1.5 listings work, product-page labels not yet.

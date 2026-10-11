@@ -37,6 +37,20 @@ class GalleryPluginTest extends TestCase
         );
     }
 
+    public function testHyva15TrackKeepsItsMarkupAndTheStacksGoInTheWrapperBeforeIt(): void
+    {
+        // Hyvä 1.5: #gallery-main is the scrolling image track (data-track) inside a positioned wrapper; labels
+        // inside the track would scroll away with the first slide.
+        $html = '<section id="gallery"><div class="relative"><div class="nav"></div>'
+            . "<div\n    id=\"gallery-main\"\n    data-track\n    class=\"flex overflow-x-auto\"\n><div>slide</div></div></div></section>";
+
+        self::assertSame(
+            '<section id="gallery"><div class="relative"><div class="nav"></div>' . self::STACKS
+            . "<div\n    id=\"gallery-main\"\n    data-track\n    class=\"flex overflow-x-auto\"\n><div>slide</div></div></div></section>",
+            (new GalleryPlugin())->afterToHtml($this->gallery(self::STACKS), $html)
+        );
+    }
+
     public function testNothingChangesWithoutLabels(): void
     {
         $html = '<div id="gallery-main" class="relative"><img></div>';
