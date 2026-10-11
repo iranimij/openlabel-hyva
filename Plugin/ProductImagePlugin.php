@@ -57,6 +57,7 @@ class ProductImagePlugin
             return $result;
         }
         $productId = (int) $subject->getData('product_id');
+        $this->labelRenderer->observeProduct($productId);
         if ($productId === 0 || $this->labels->getForProduct($productId) === []) {
             return $result;
         }
