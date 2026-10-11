@@ -59,6 +59,8 @@ class ListingSlotTest extends TestCase
         }
     }
 
+    // 2.4.7: method-level fixtures replace the class-level ones, so the search index is scheduled here too.
+    #[DataFixture(ScheduledSearchIndex::class)]
     #[DataFixture(DesignFixture::class, ['store_texts' => [0 => ['text' => '-{SAVE_PERCENT}%']]], 'design')]
     public function testA36ProductListingGetsItsLabelsWithOneQuery(): void
     {
@@ -86,6 +88,8 @@ class ListingSlotTest extends TestCase
         );
     }
 
+    // 2.4.7: method-level fixtures replace the class-level ones, so the search index is scheduled here too.
+    #[DataFixture(ScheduledSearchIndex::class)]
     #[DataFixture(DesignFixture::class, [], 'design')]
     public function testListItemProcessorTagsTheBlockCacheEntry(): void
     {

@@ -54,6 +54,8 @@ class GallerySlotTest extends TestCase
         }
     }
 
+    // 2.4.7: method-level fixtures replace the class-level ones, so the search index is scheduled here too.
+    #[DataFixture(ScheduledSearchIndex::class)]
     #[DataFixture(ProductFixture::class, ['sku' => 'ol-hyva-pdp', 'price' => 40, 'special_price' => 30], 'product')]
     #[DataFixture(DesignFixture::class, ['store_texts' => [0 => ['text' => '-{SAVE_PERCENT}%']]], 'design')]
     public function testProductPageGalleryGetsItsLabelsWithOneQuery(): void
