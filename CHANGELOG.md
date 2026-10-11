@@ -17,7 +17,7 @@ OpenLabel 1.0 for Hyvä: labels on listings (category, search, widgets, sliders)
 
 ## [1.0.0-rc1] - 2026-10-11
 
-First release candidate of the Hyvä render package for OpenLabel 1.0 (requires `iranimij/openlabel` ^1.0).
+First release candidate of the Hyvä render package for OpenLabel 1.0 (requires `iranimij/openlabel` ^1.0). Tested on Hyvä 1.4.2; 1.3 best effort; on Hyvä 1.5 listings work, product-page labels not yet.
 
 ### Added
 - M3 S6 · `bin/magento hyva:config:generate` lists the module (observer on `hyva_config_generate_before`) so theme builds can scan `view/frontend/tailwind/tailwind.config.js`; nothing depends on it. The listing plugin tags the page with every product card it sees (`cat_p_<id>`), so CMS pages with product widgets refresh when a label starts matching. Storefront acceptance specs (CSP, no inline styles, no rebuild, click-through, legibility, RTL) live in `openlabel-dev-env`.
