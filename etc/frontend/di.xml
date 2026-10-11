@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Iman Aboheydary. All rights reserved.
+ * See LICENSE for license details (MIT).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\Image">
+        <plugin name="openlabel_listing_slot" type="Iranimij\OpenLabelHyva\Plugin\ProductImagePlugin"/>
+    </type>
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
+        <plugin name="openlabel_remember_products" type="Iranimij\OpenLabelHyva\Plugin\CollectionPreloadPlugin"/>
+    </type>
+</config>

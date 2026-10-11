@@ -5,8 +5,15 @@
  * See LICENSE for license details (MIT).
  */
 -->
-<!-- M0 placeholder: Hyvä adds the "hyva_" prefixed handle for every page; label slots are declared here in M3. -->
+<!-- Every Hyvä page: the single generated stylesheet and the page cache tags of rendered labels. -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body/>
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Iranimij\OpenLabel\Block\Css" name="openlabel.css"/>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Iranimij\OpenLabel\Block\Identities" name="openlabel.identities"/>
+        </referenceContainer>
+    </body>
 </page>
