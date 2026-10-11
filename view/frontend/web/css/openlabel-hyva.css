@@ -1,0 +1,19 @@
+/**
+ * Copyright © Iman Aboheydary. All rights reserved.
+ * See LICENSE for license details (MIT).
+ *
+ * Hyvä-specific structural rules, appended to the generated stylesheet (docs/hyva-integration.md §2, §4).
+ * Container-query roots are the product card and the gallery, never the image link (it would collapse to 0 × 0).
+ */
+.product-item {
+    container-type: inline-size;
+}
+
+#gallery-main {
+    container-type: inline-size;
+}
+
+/* Fullscreen gallery: Hyvä makes a wrapper two levels up `fixed`; labels stay out of the zoomed view. */
+.fixed #gallery-main > .ol-stack {
+    display: none;
+}

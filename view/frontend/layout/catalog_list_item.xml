@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Iman Aboheydary. All rights reserved.
+ * See LICENSE for license details (MIT).
+ */
+-->
+<!-- Hyvä list item: label cache tags on every (block-cached) product card. -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product_list_item">
+            <arguments>
+                <argument name="additional_item_renderer_processors" xsi:type="array">
+                    <item name="openlabel" xsi:type="object">Iranimij\OpenLabelHyva\Model\ListItemProcessor</item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
