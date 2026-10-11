@@ -33,6 +33,9 @@
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        },
         "iranimij": {
             "changelog": "https://github.com/iranimij/openlabel-hyva/blob/main/CHANGELOG.md"
         }
