@@ -54,8 +54,7 @@ class ProductImagePluginTest extends TestCase
 
     public function testOtherImageTemplatesAreUntouched(): void
     {
-        $image = $this->image();
-        $image->setTemplate('Magento_Catalog::product/image_with_borders.phtml');
+        $image = $this->image([], 'Magento_Catalog::product/image_with_borders.phtml');
 
         self::assertSame(self::IMG, $this->plugin()->afterToHtml($image, self::IMG));
     }
@@ -102,15 +101,17 @@ class ProductImagePluginTest extends TestCase
 
     /**
      * @param array<string, string> $customAttributes
+     * @param string $template
      * @return Image
      */
-    private function image(array $customAttributes = []): Image
+    private function image(array $customAttributes = [], string $template = ProductImagePlugin::LIST_TEMPLATE): Image
     {
         /** @var Image $image */
-        $image = (new ObjectManager($this))->getObject(Image::class);
-        $image->setTemplate(ProductImagePlugin::LIST_TEMPLATE);
-        $image->setData('product_id', 42);
-        $image->setData('custom_attributes', $customAttributes);
+        $image = (new ObjectManager($this))->getObject(Image::class, ['data' => [
+            'template' => $template,
+            'product_id' => 42,
+            'custom_attributes' => $customAttributes,
+        ]]);
 
         return $image;
     }
