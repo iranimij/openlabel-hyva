@@ -39,6 +39,13 @@ class ListItemProcessor implements ArgumentInterface
     public function beforeListItemToHtml(AbstractBlock $itemRendererBlock, ProductInterface $product): void
     {
         if (!$this->labels->isEnabled()) {
+            // Hyvä's card cache key has no page type: a card rendered where labels are hidden (or off) gets its
+            // own entry, so it is never served where they show.
+            $key = $itemRendererBlock->getData('cache_key');
+            if (is_string($key) && $key !== '') {
+                $itemRendererBlock->setData('cache_key', $key . '-openlabel-off');
+            }
+
             return;
         }
         $this->labels->remember([$product]);

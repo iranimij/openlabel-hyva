@@ -90,4 +90,27 @@ class ListItemProcessorTest extends TestCase
 
         (new CollectionPreloadPlugin($labels))->afterLoad($collection, $collection);
     }
+
+    public function testCardsOnPagesWithoutLabelsGetTheirOwnCacheEntry(): void
+    {
+        // Hyvä's card cache key has no page type: a card cached where labels are hidden must not be reused where
+        // they show (and the other way round).
+        $hidden = $this->createStub(Labels::class);
+        $hidden->method('isEnabled')->willReturn(false);
+        $shown = $this->createStub(Labels::class);
+        $shown->method('isEnabled')->willReturn(true);
+        $renderer = $this->createStub(LabelRenderer::class);
+        $renderer->method('collectIdentities')->willReturn([]);
+        $product = $this->createStub(\Magento\Catalog\Api\Data\ProductInterface::class);
+        $onHiddenPage = (new ObjectManager($this))->getObject(Template::class);
+        $onHiddenPage->setData('cache_key', 'abc');
+        $onNormalPage = (new ObjectManager($this))->getObject(Template::class);
+        $onNormalPage->setData('cache_key', 'abc');
+
+        (new ListItemProcessor($hidden, $renderer))->beforeListItemToHtml($onHiddenPage, $product);
+        (new ListItemProcessor($shown, $renderer))->beforeListItemToHtml($onNormalPage, $product);
+
+        self::assertSame('abc-openlabel-off', $onHiddenPage->getData('cache_key'));
+        self::assertSame('abc', $onNormalPage->getData('cache_key'), 'pages with labels keep the existing cache entries');
+    }
 }
