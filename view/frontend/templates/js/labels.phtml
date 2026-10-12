@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © Iman Aboheydary. All rights reserved.
+ * See LICENSE for license details (MIT).
+ */
+
+/**
+ * OpenLabel 1.1 script: one timer for every {COUNTDOWN} of the page (paused while the tab is hidden; the ticking
+ * text is aria-hidden) and the product page variant switch (Hyvä's configurable-selection-changed: when exactly
+ * one variant matches the choice, its labels show; otherwise the product's own). Labels are already in the page,
+ * the script only toggles a class, so no markup is built here.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Hyva\Theme\ViewModel\HyvaCsp|null $hyvaCsp
+ */
+?>
+<script>
+(() => {
+    const pad = (n) => String(n).padStart(2, '0');
+    const format = (s) => {
+        const clock = pad(Math.floor(s % 86400 / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
+        return s >= 86400 ? Math.floor(s / 86400) + 'd ' + clock : clock;
+    };
+    let timer = null;
+    const tick = () => {
+        const now = Date.now();
+        document.querySelectorAll('.ol-countdown[data-ol-end]').forEach((el) => {
+            const left = Math.max(0, Math.floor((Date.parse(el.dataset.olEnd) - now) / 1000));
+            if (el.firstElementChild) {
+                el.firstElementChild.textContent = format(left);
+            }
+        });
+    };
+    const start = () => {
+        if (timer === null && document.querySelector('.ol-countdown[data-ol-end]')) {
+            tick();
+            timer = setInterval(tick, 1000);
+        }
+    };
+    const stop = () => {
+        clearInterval(timer);
+        timer = null;
+    };
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    start();
+
+    window.addEventListener('configurable-selection-changed', (event) => {
+        const candidates = Object.values((event.detail && event.detail.candidates) || {});
+        const chosen = candidates.length === 1 ? String(candidates[0]) : '0';
+        document.querySelectorAll('[data-ol-variant]').forEach((el) => {
+            el.classList.toggle('ol-label--hidden', el.dataset.olVariant !== chosen);
+        });
+    });
+})();
+</script>
+<?php if (isset($hyvaCsp)) { $hyvaCsp->registerInlineScript(); } ?>

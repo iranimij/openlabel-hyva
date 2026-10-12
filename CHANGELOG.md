@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Added
 - Labels in the product text (OpenLabel 1.1): next to the price (price box of every product card), under the name and next to Add to Cart (product cards), and the same three on the product page after `product.info.title`, `product.info.price` and `product.info.addtocart` (configurable in `etc/frontend/di.xml`).
 
+- Product page labels follow the chosen variant of a configurable product, and `{COUNTDOWN}` ticks: one small inline script (under 1 KB gzipped, CSP-registered), added only to pages that use either.
+
 ### Changed
 - Requires OpenLabel 1.1.
 

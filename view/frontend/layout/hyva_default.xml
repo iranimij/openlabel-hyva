@@ -14,6 +14,8 @@
         </referenceBlock>
         <referenceContainer name="before.body.end">
             <block class="Iranimij\OpenLabel\Block\Identities" name="openlabel.identities"/>
+            <block class="Iranimij\OpenLabelHyva\Block\Script" name="openlabel.script"
+                   template="Iranimij_OpenLabelHyva::js/labels.phtml" after="openlabel.identities"/>
         </referenceContainer>
     </body>
 </page>
