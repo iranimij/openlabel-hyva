@@ -39,3 +39,14 @@
 .product-item .price-box + .ol-inline--near-price {
     margin-inline-start: 0;
 }
+
+/*
+ * Hyvä 1.5+ product gallery: the previous/next buttons sit in a bottom corner of the image (end by default, start
+ * with the theme's "start" setting) above the track. Labels in that corner move up above them, so the buttons stay
+ * usable and the labels visible and clickable. Keyed on the buttons being in the markup (not on Alpine showing them),
+ * so nothing moves after the page has loaded.
+ */
+#gallery > .relative:has(> .bottom-2.end-2 > [data-prev]) > .ol-stack:is(.ol-pos-be, .ol-pos-br:dir(ltr), .ol-pos-bl:dir(rtl)),
+#gallery > .relative:has(> .bottom-2.start-2 > [data-prev]) > .ol-stack:is(.ol-pos-bs, .ol-pos-bl:dir(ltr), .ol-pos-br:dir(rtl)) {
+    margin-block-end: 3.25rem;
+}
