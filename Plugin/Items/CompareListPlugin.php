@@ -42,8 +42,7 @@ class CompareListPlugin
         if (!is_string($result) || $result === '' || !$this->labels->isEnabled()) {
             return $result;
         }
-        $items = $subject->getItems();
-        foreach (is_iterable($items) ? $items : [] as $product) {
+        foreach ($subject->getItems() as $product) {
             if (!$product instanceof Product) {
                 continue;
             }
