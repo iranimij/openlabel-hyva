@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
+### Fixed
+- Hyvä 1.5 product page: a label in the bottom corner of the gallery that holds the previous/next image buttons sat underneath them (covered and not clickable); labels in that corner now sit above the buttons.
+
 ### Added
 - Labels in the product text (OpenLabel 1.1): next to the price (price box of every product card), under the name and next to Add to Cart (product cards), and the same three on the product page after `product.info.title`, `product.info.price` and `product.info.addtocart` (configurable in `etc/frontend/di.xml`).
 - Product page labels follow the chosen variant of a configurable product, and `{COUNTDOWN}` ticks: one small inline script (under 1 KB gzipped, CSP-registered), added only to pages that use either.
