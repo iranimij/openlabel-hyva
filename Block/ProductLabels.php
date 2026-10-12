@@ -50,7 +50,8 @@ class ProductLabels extends AbstractBlock
         $this->labels->remember([$product]);
 
         // The main product image is above the fold: image labels load eagerly like it.
-        return $this->labelRenderer->getStacksHtml($product, 'product', 'eager');
+        // Configurable products also carry the labels of each variant, shown by the script when one is chosen.
+        return $this->labelRenderer->getProductPageStacksHtml($product, 'eager');
     }
 
     /**
