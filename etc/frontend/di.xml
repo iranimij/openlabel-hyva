@@ -32,6 +32,23 @@
     <type name="Magento\Catalog\Block\Product\View">
         <plugin name="openlabel_list_item_slots" type="Iranimij\OpenLabelHyva\Plugin\ListItemPlugin"/>
     </type>
+    <!-- 1.1: labels in the cart, mini cart, wish list and compare list. -->
+    <type name="Magento\Checkout\Block\Cart\Item\Renderer">
+        <plugin name="openlabel_cart_item" type="Iranimij\OpenLabelHyva\Plugin\Items\CartItemPlugin"/>
+    </type>
+    <type name="Magento\Checkout\CustomerData\AbstractItem">
+        <plugin name="openlabel_minicart_item" type="Iranimij\OpenLabelHyva\Plugin\Items\MiniCartItemPlugin"/>
+    </type>
+    <!-- After the Tax/Weee plugins, which render every item's product_price again. -->
+    <type name="Magento\Checkout\CustomerData\Cart">
+        <plugin name="openlabel_minicart_section" type="Iranimij\OpenLabelHyva\Plugin\Items\MiniCartItemPlugin" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Info">
+        <plugin name="openlabel_wishlist_item" type="Iranimij\OpenLabelHyva\Plugin\Items\WishlistItemPlugin"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\Compare\ListCompare">
+        <plugin name="openlabel_compare_list" type="Iranimij\OpenLabelHyva\Plugin\Items\CompareListPlugin"/>
+    </type>
     <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
         <plugin name="openlabel_remember_products" type="Iranimij\OpenLabelHyva\Plugin\CollectionPreloadPlugin"/>
     </type>

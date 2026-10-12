@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - Product page labels follow the chosen variant of a configurable product, and `{COUNTDOWN}` ticks: one small inline script (under 1 KB gzipped, CSP-registered), added only to pages that use either.
 
+- Labels in the shopping cart, the mini cart (through the cart section data, no JavaScript), the wish list and the compare page.
+
 ### Changed
 - Requires OpenLabel 1.1.
 
