@@ -18,13 +18,13 @@
     ],
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
-        "iranimij/openlabel": "^1.0",
+        "iranimij/openlabel": "^1.1",
         "magento/framework": "^103.0.7",
         "magento/module-catalog": "^104.0.7",
         "magento/module-store": "^101.1.7"
     },
     "suggest": {
-        "hyva-themes/magento2-default-theme": "The Hyvä default theme (1.3 or 1.4) this package renders into"
+        "hyva-themes/magento2-default-theme": "The Hyvä default theme (1.3, 1.4 or 1.5) this package renders into"
     },
     "autoload": {
         "files": ["registration.php"],
@@ -34,7 +34,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "1.0.x-dev"
+            "dev-main": "1.1.x-dev"
         },
         "iranimij": {
             "changelog": "https://github.com/iranimij/openlabel-hyva/blob/main/CHANGELOG.md"

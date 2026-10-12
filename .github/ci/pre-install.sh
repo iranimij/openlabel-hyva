@@ -15,7 +15,7 @@ composer config minimum-stability dev
 composer config prefer-stable true
 
 # While stacked pull requests are open, test against the openlabel branch named in .github/ci/openlabel-ref
-# ("main" or empty = the default branch). openlabel main is aliased 1.0.x-dev, which satisfies "^1.0".
+# ("main" or empty = the default branch). openlabel main is aliased 1.1.x-dev, which satisfies "^1.1".
 OPENLABEL_REF=""
 for ref_file in "$(dirname "$0")/openlabel-ref" "${GITHUB_WORKSPACE:-/github/workspace}/.github/ci/openlabel-ref"; do
     if [ -f "$ref_file" ]; then
