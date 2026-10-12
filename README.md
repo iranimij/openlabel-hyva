@@ -1,6 +1,6 @@
 # OpenLabel Hyvä render package
 
-Storefront rendering for [OpenLabel](https://github.com/iranimij/openlabel) on Hyvä 1.3 and 1.4: label slots in product listings (category, search, widgets, sliders) and the product page gallery, one generated stylesheet per store, no inline styles, no JavaScript for display, and **no Tailwind rebuild needed** on a stock Hyvä theme.
+Storefront rendering for [OpenLabel](https://github.com/iranimij/openlabel) on Hyvä 1.3, 1.4 and 1.5: label slots in product listings (category, search, widgets, sliders), the product page gallery and, since 1.1, the product text (next to the price, next to Add to Cart, under the name), one generated stylesheet per store, no inline styles, no JavaScript for display, and **no Tailwind rebuild needed** on a stock Hyvä theme.
 
 > Status: under construction (milestone M0). The render package arrives in milestone M3.
 

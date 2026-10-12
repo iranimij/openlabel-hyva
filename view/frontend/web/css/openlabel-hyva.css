@@ -27,3 +27,15 @@
 .fixed #gallery-main > .ol-stack {
     display: none;
 }
+
+/* Product card, 1.1: "next to the price" on the price line (the price box is a block); without :has it wraps below. */
+.product-item div:has(> .price-box + .ol-inline--near-price) {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25em .5em;
+}
+
+.product-item .price-box + .ol-inline--near-price {
+    margin-inline-start: 0;
+}

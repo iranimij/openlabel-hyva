@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
+### Added
+- Labels in the product text (OpenLabel 1.1): next to the price (price box of every product card), under the name and next to Add to Cart (product cards), and the same three on the product page after `product.info.title`, `product.info.price` and `product.info.addtocart` (configurable in `etc/frontend/di.xml`).
+
+### Changed
+- Requires OpenLabel 1.1.
+
 ## [1.0.0] - 2026-10-11
 
 OpenLabel 1.0 for Hyvä: labels on listings (category, search, widgets, sliders) and in the product gallery, from cached pages, without JavaScript or a Tailwind build. Tested on Hyvä 1.4.2 and 1.5.2 (1.3 best effort).

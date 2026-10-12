@@ -13,6 +13,25 @@
     <type name="Magento\Catalog\Block\Product\View\Gallery">
         <plugin name="openlabel_gallery_slot" type="Iranimij\OpenLabelHyva\Plugin\GalleryPlugin"/>
     </type>
+    <!-- 1.1: labels in the product text (next to the price, next to Add to Cart, under the name). -->
+    <type name="Magento\Framework\View\Layout">
+        <plugin name="openlabel_inline_slots" type="Iranimij\OpenLabelHyva\Plugin\InlineSlotPlugin"/>
+    </type>
+    <type name="Iranimij\OpenLabelHyva\Plugin\InlineSlotPlugin">
+        <arguments>
+            <argument name="productPageSlots" xsi:type="array">
+                <item name="product.info.title" xsi:type="string">under_name</item>
+                <item name="product.info.price" xsi:type="string">near_price</item>
+                <item name="product.info.addtocart" xsi:type="string">near_cart</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
+        <plugin name="openlabel_near_price" type="Iranimij\OpenLabelHyva\Plugin\PriceBoxPlugin"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="openlabel_list_item_slots" type="Iranimij\OpenLabelHyva\Plugin\ListItemPlugin"/>
+    </type>
     <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
         <plugin name="openlabel_remember_products" type="Iranimij\OpenLabelHyva\Plugin\CollectionPreloadPlugin"/>
     </type>
